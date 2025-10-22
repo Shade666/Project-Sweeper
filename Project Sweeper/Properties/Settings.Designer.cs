@@ -34,17 +34,5 @@ namespace PKHL.ProjectSweeper.Properties {
                 this["AddinPath"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2015-05-01")]
-        public global::System.DateTime EntCheck {
-            get {
-                return ((global::System.DateTime)(this["EntCheck"]));
-            }
-            set {
-                this["EntCheck"] = value;
-            }
-        }
     }
 }

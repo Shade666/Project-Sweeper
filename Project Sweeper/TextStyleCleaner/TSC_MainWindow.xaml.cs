@@ -149,7 +149,7 @@ namespace PKHL.ProjectSweeper.TextStyleCleaner
             CheckBox cxb = sender as CheckBox;
             if (cxb != null && cxb.IsLoaded)
             {
-                ListViewItem lvi = pkhCommon.WPF.Helpers.GetVisualParent<ListViewItem>(cxb);
+                ListViewItem lvi = PKHL.ProjectSweeper.Helpers.WpfHelpers.GetVisualParent<ListViewItem>(cxb);
                 TextStyleDefinition lvi_tsd = lvi.Content as TextStyleDefinition;
                 foreach (TextStyleDefinition tsd in data)   //check if any styles are set to be changed to this one
                 {
@@ -293,7 +293,7 @@ namespace PKHL.ProjectSweeper.TextStyleCleaner
             if (cb == null || !cb.IsDropDownOpen || cb.SelectedItem == null)
                 return;
             TextStyleDefinition cb_tsd = cb.SelectedItem as TextStyleDefinition;
-            ListViewItem lvi = pkhCommon.WPF.Helpers.GetVisualParent<ListViewItem>(cb);
+            ListViewItem lvi = PKHL.ProjectSweeper.Helpers.WpfHelpers.GetVisualParent<ListViewItem>(cb);
             TextStyleDefinition lvi_tsd = lvi.Content as TextStyleDefinition;
 
             System.Diagnostics.Debug.Print("ComboBox_SelectionChanged doing something.");

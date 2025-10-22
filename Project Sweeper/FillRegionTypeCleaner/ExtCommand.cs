@@ -22,11 +22,6 @@ namespace PKHL.ProjectSweeper.FillRegionTypeCleaner
         {
             try
             {
-#if !DEBUG
-                if (!ProjectSweeper.UserIsEntitled(commandData))
-                    return Result.Failed;
-#endif
-
                 TheDoc = commandData.Application.ActiveUIDocument.Document;
                 allFillRegionTypes = new ObservableCollection<FillRegionTypeDefinition>();
 

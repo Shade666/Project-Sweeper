@@ -154,7 +154,7 @@ namespace PKHL.ProjectSweeper.LineStyleCleaner
             CheckBox cb = sender as CheckBox;
             if (cb != null && cb.IsLoaded)
             {
-                ListViewItem lvi = pkhCommon.WPF.Helpers.GetVisualParent<ListViewItem>(cb);
+                ListViewItem lvi = PKHL.ProjectSweeper.Helpers.WpfHelpers.GetVisualParent<ListViewItem>(cb);
                 LineStyleDefinition lvi_lsd = lvi.Content as LineStyleDefinition;
                 foreach (LineStyleDefinition lsd in data)
                 {

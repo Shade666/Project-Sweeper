@@ -113,7 +113,7 @@ namespace PKHL.ProjectSweeper.LinePatternCleaner
 			CheckBox cb = sender as CheckBox;
 			if (cb != null && cb.IsLoaded)
 			{
-				ListViewItem lvi = pkhCommon.WPF.Helpers.GetVisualParent<ListViewItem>(cb);
+				ListViewItem lvi = PKHL.ProjectSweeper.Helpers.WpfHelpers.GetVisualParent<ListViewItem>(cb);
                 LinePatternDefinition lvi_fpd = lvi.Content as LinePatternDefinition;
 				foreach(LinePatternDefinition fpd in data)
 				{
@@ -206,7 +206,7 @@ namespace PKHL.ProjectSweeper.LinePatternCleaner
 
             System.Diagnostics.Debug.Print("ComboBox_SelectionChanged doing something.");
             LinePatternDefinition cb_fpd = cb.SelectedItem as LinePatternDefinition;
-            ListViewItem lvi = pkhCommon.WPF.Helpers.GetVisualParent<ListViewItem>(cb);
+            ListViewItem lvi = PKHL.ProjectSweeper.Helpers.WpfHelpers.GetVisualParent<ListViewItem>(cb);
             LinePatternDefinition lvi_fpd = lvi.Content as LinePatternDefinition;
 
             if (cb_fpd.NewStyle != null && cb_fpd.NewStyle.Equals(lvi_fpd)) //changing to a style set to change to this style

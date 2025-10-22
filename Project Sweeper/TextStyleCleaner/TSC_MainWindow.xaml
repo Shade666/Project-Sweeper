@@ -5,8 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="clr-namespace:PKHL.ProjectSweeper.TextStyleCleaner"
 	xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
-	xmlns:FCC="clr-namespace:pkhCommon.WPF.FilterControlComponent;assembly=pkhCommon"
-	xmlns:WPF="clr-namespace:pkhCommon.WPF.Converters;assembly=pkhCommon"
+	xmlns:ctrl="clr-namespace:PKHL.ProjectSweeper.Controls"
+	xmlns:conv="clr-namespace:PKHL.ProjectSweeper.Converters"
     xmlns:lex="http://wpflocalizeextension.codeplex.com"
     lex:LocalizeDictionary.DesignCulture="fr"
     lex:ResxLocalizationProvider.DefaultAssembly="Project Sweeper"
@@ -29,13 +29,12 @@
                 </ResourceDictionary>
 
                 <ResourceDictionary>
-                    <WPF:BoolToVisibilityConverter x:Key="B2V"/>
+                    <conv:BoolToVisibilityConverter x:Key="B2V"/>
                 </ResourceDictionary>
                 <ResourceDictionary>
-                    <WPF:IntegerToBoolConverter x:Key="I2B"/>
+                    <conv:IntegerToBoolConverter x:Key="I2B"/>
                 </ResourceDictionary>
                 <ResourceDictionary Source="../ComboBoxFlatStyle.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/pkhCommon;component/FilterControlComponent/FilterControl.generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -62,7 +61,7 @@
                     </CollectionViewSource.SortDescriptions>
                 </CollectionViewSource>
 
-                <WPF:IntegerComparer x:Key="ID_Comparer"/>
+                <conv:IntegerComparer x:Key="ID_Comparer"/>
                 <local:TextStyleDefinition x:Key="deleteItem" StyleName="{lex:Loc Key=TSC_DeleteNotes}" ItsId="-1"/>
             </ListView.Resources>
 
@@ -366,7 +365,7 @@
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Vertical" Grid.Column="4">
                 <Border BorderThickness="1" Margin="2" BorderBrush="DarkGray" Padding="2" CornerRadius="5">
                     <StackPanel>
-                        <FCC:FilterControl Name="FilterBox" Height="25" Margin="2" Header="{lex:Loc Key=FilterDotDotDot}" 
+                        <ctrl:FilterControl Name="FilterBox" Height="25" Margin="2" Header="{lex:Loc Key=FilterDotDotDot}"
                                            TargetControl="{Binding ElementName=theLeftList}" FilterTextBindingPath="StyleName"/>
                         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
                             <Button Margin="2,0" HorizontalAlignment="Stretch" Content="{lex:Loc}" Name="PurgeUnusedButton" Click="PurgeButton_Click"/>

@@ -183,7 +183,7 @@ namespace PKHL.ProjectSweeper
                     input_Box.MainContent = LocalizationProvider.GetLocalizedValue<string>("DIA007_MainCont"); //Please choose a name for the new template.
                     input_Box.ShowDialog();
                     if (input_Box.DialogResult == true)
-                        str.TName = pkhCommon.StringHelper.SafeForXML(input_Box.UserInput);
+                        str.TName = PKHL.ProjectSweeper.Helpers.StringHelpers.SafeForXML(input_Box.UserInput);
                     else
                         return;
                 }
@@ -267,7 +267,7 @@ namespace PKHL.ProjectSweeper
 
             if (res == Autodesk.Revit.UI.TaskDialogResult.Yes)
             {
-                ListBoxItem lbi = pkhCommon.WPF.Helpers.GetVisualParent<ListBoxItem>(butt);
+                ListBoxItem lbi = PKHL.ProjectSweeper.Helpers.WpfHelpers.GetVisualParent<ListBoxItem>(butt);
                 DataRowView drv = lbi.Content as DataRowView;
                 PSTemplates.SavedtemplateRow str = drv.Row as PSTemplates.SavedtemplateRow;
                 str.Delete();

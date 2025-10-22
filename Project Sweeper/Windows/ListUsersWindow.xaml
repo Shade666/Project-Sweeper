@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PKHL.ProjectSweeper"
         xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
-	    xmlns:FCC="clr-namespace:pkhCommon.WPF.FilterControlComponent;assembly=pkhCommon"
+	    xmlns:ctrl="clr-namespace:PKHL.ProjectSweeper.Controls"
         xmlns:lex="http://wpflocalizeextension.codeplex.com"
         lex:LocalizeDictionary.DesignCulture="en"
         lex:ResxLocalizationProvider.DefaultAssembly="Project Sweeper"
@@ -28,13 +28,12 @@
                     </CollectionViewSource>
                 </ResourceDictionary>
 
-                <ResourceDictionary Source="pack://application:,,,/pkhCommon;component/FilterControlComponent/FilterControl.generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <DockPanel LastChildFill="True" Margin="0" Background="#FF64CF3C">
-            <FCC:FilterControl DockPanel.Dock="Top" Height="25" Margin="2,2,2,0" Header="{lex:Loc Key=FilterDotDotDot}"
+            <ctrl:FilterControl DockPanel.Dock="Top" Height="25" Margin="2,2,2,0" Header="{lex:Loc Key=FilterDotDotDot}"
                                TargetControl="{Binding ElementName=mainListView}" FilterTextBindingPath="Name" />
             <ListBox x:Name="mainListView" DisplayMemberPath="Name" Margin="2" MinWidth="64" Width="Auto" 
                  ItemsSource="{Binding Source={StaticResource theDataView}}" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled">

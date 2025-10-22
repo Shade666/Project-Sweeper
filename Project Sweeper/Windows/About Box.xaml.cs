@@ -35,57 +35,6 @@ namespace PKHL.ProjectSweeper
             setLogo();
         }
 
-        /// <summary>
-        /// Used for unlicensed multilicense apps only.
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="companyName"></param>
-        //public AboutBox(Assembly a, string companyName, string hardwareId)
-        //{
-        //    InitializeComponent();
-
-        //    TheAssembly = a;
-        //    setLogo();
-        //    this.Title = LocalizationProvider.GetLocalizedValue<string>("ABOUT_Title") + " ML";
-        //    this.labelProductName.Text = AssemblyProduct + " ML";
-        //    this.labelVersion.Text = String.Format("Version {0}.{1}.{2}.{3}", MajorVersion, MinorVersion, Build, Revision);
-        //    this.labelCopyright.Text = AssemblyCopyright;
-        //    this.labelCompanyName.Text = AssemblyCompany;
-        //    AppVersion = Build;
-        //    if(companyName != null)
-        //        this.textBoxDescription.Text = LocalizationProvider.GetLocalizedValue<string>("ABOUT_Desc_Txt2") + " " + companyName + "\n"; //This software is licensed to
-        //    else
-        //        this.textBoxDescription.Text = LocalizationProvider.GetLocalizedValue<string>("ABOUT_Desc_Txt3") + "\n"; //This software is not licensed.
-        //    this.textBoxDescription.AppendText(string.Format("Computer: {0} ({1})", Environment.MachineName, hardwareId));
-        //    this.textBoxDescription.AppendText("\n\n" + LocalizationProvider.GetLocalizedValue<string>("ABOUT_Desc_Txt1")); //Checking for updates....
-        //}
-
-        /// <summary>
-        /// Used for Infralution multilicense apps only.
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="companyName"></param>
-        //public AboutBox(Assembly a, string companyName, string hardwareId, string expires)
-        //{
-        //    InitializeComponent();
-
-        //    TheAssembly = a;
-        //    setLogo();
-        //    this.Title = LocalizationProvider.GetLocalizedValue<string>("ABOUT_Title") + " ML";
-        //    this.labelProductName.Text = AssemblyProduct + " ML";
-        //    this.labelVersion.Text = String.Format("Version {0}.{1}.{2}.{3}", MajorVersion, MinorVersion, Build, Revision);
-        //    this.labelCopyright.Text = AssemblyCopyright;
-        //    this.labelCompanyName.Text = AssemblyCompany;
-        //    AppVersion = Build;
-        //    if (companyName != null)
-        //        this.textBoxDescription.Text = LocalizationProvider.GetLocalizedValue<string>("ABOUT_Desc_Txt2") + " " + companyName; //This software is licensed to
-        //    else
-        //        this.textBoxDescription.Text = LocalizationProvider.GetLocalizedValue<string>("ABOUT_Desc_Txt3"); //This software is not licensed.
-        //    this.textBoxDescription.AppendText(string.Format("\nComputer: {0}", hardwareId));
-        //    this.textBoxDescription.AppendText(string.Format("\nLicense expires: {0}", expires));
-        //    this.textBoxDescription.AppendText("\n\n" + LocalizationProvider.GetLocalizedValue<string>("ABOUT_Desc_Txt1")); //Checking for updates....
-        //}
-
         #region Assembly Attribute Accessors
 
         public string AssemblyTitle
@@ -214,67 +163,6 @@ namespace PKHL.ProjectSweeper
             TestButton.Visibility = Visibility.Visible;
             this.Title += " - Debug Mode";
 #endif
-            //BackgroundWorker worker = new BackgroundWorker();
-            //worker.DoWork += worker_DoWork;
-            //worker.RunWorkerCompleted += worker_RunWorkerCompleted;
-            //worker.RunWorkerAsync();
-        }
-
-        void worker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            try
-            {
-                HttpWebRequest myHttpWebRequest = (HttpWebRequest)WebRequest.Create("http://www.pkhlineworks.ca/softwareversions.xml");
-                HttpWebResponse myHttpWebResponse = (HttpWebResponse)myHttpWebRequest.GetResponse();
-                // Gets the stream associated with the response.
-                Stream receiveStream = myHttpWebResponse.GetResponseStream();
-
-                //Major-Revit version   Minor-App version   MajorRevision-App release version    MinorRevision-not used
-                //AssemblyTitle must be as it appears in softwareversions.xml
-                XmlReader Xread = XmlReader.Create(receiveStream);
-                string appSymbol = null;
-                appSymbol = (AssemblyTitle + MajorVersion + "_V" + MinorVersion).Replace(" ","_");
-                if (Xread.ReadToFollowing(appSymbol))
-                    System.Diagnostics.Debug.WriteLine(string.Format("Found symbol: {0}", appSymbol));
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine(string.Format("Did not find symbol: {0}", appSymbol));
-                    e.Result = NotListed; //Could not find this software listed in updates.
-                    myHttpWebResponse.Close();
-                    receiveStream.Close();
-                    return;
-                }
-
-                int ver = Xread.ReadElementContentAsInt();
-                int thisVer = Convert.ToInt32(AppVersion);
-
-                // Releases the resources of the response.
-                myHttpWebResponse.Close();
-                // Releases the resources of the Stream.
-                receiveStream.Close();
-
-                if (ver > thisVer)
-                    e.Result = (string.Format(NewVersion, AssemblyTitle, ver.ToString())); //A newer version of {0} is available. Version {1} is available at www.pkhlineworks.ca.
-                else
-                    e.Result = Up2Date; //Your product is up to date.
-            }
-            catch (Exception)
-            {
-                e.Result = NoServer; //Could not contact server to check for updates.
-            }
-        }
-
-        void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            this.textBoxDescription.AppendText("\n");
-            this.textBoxDescription.AppendText(e.Result.ToString());
-        }
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            Exception err = new Exception("Test exception created.");
-            err.Data.Add("test data", "my test data in exception");
-            throw err;
         }
     }
 }

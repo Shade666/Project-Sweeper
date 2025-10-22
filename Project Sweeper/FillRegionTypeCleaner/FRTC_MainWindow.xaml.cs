@@ -113,7 +113,7 @@ namespace PKHL.ProjectSweeper.FillRegionTypeCleaner
 			CheckBox cb = sender as CheckBox;
 			if (cb != null && cb.IsLoaded)
 			{
-				ListViewItem lvi = pkhCommon.WPF.Helpers.GetVisualParent<ListViewItem>(cb);
+				ListViewItem lvi = PKHL.ProjectSweeper.Helpers.WpfHelpers.GetVisualParent<ListViewItem>(cb);
 				FillRegionTypeDefinition lvi_fpd = lvi.Content as FillRegionTypeDefinition;
 				foreach(FillRegionTypeDefinition fpd in data)
 				{
@@ -223,7 +223,7 @@ namespace PKHL.ProjectSweeper.FillRegionTypeCleaner
             if (cb == null || !cb.IsDropDownOpen || cb.SelectedItem == null)
                 return;
             FillRegionTypeDefinition cb_frtd = cb.SelectedItem as FillRegionTypeDefinition;
-            ListViewItem lvi = pkhCommon.WPF.Helpers.GetVisualParent<ListViewItem>(cb);
+            ListViewItem lvi = PKHL.ProjectSweeper.Helpers.WpfHelpers.GetVisualParent<ListViewItem>(cb);
             FillRegionTypeDefinition lvi_frtd = lvi.Content as FillRegionTypeDefinition;
 
             System.Diagnostics.Debug.Print("ComboBox_SelectionChanged doing something.");

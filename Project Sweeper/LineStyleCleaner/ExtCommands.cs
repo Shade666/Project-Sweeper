@@ -28,11 +28,6 @@ namespace PKHL.ProjectSweeper.LineStyleCleaner
         {
             try
             {
-#if !DEBUG
-            if (!PKHL.ProjectSweeper.ProjectSweeper.UserIsEntitled(commandData))
-                return Result.Failed;
-#endif
-
                 //no api access to lines created with linework tool
                 TheUIDoc = commandData.Application.ActiveUIDocument;
                 TheDoc = commandData.Application.ActiveUIDocument.Document;

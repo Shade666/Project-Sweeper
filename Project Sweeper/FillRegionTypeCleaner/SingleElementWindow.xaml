@@ -3,12 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	    xmlns:FCC="clr-namespace:pkhCommon.WPF.FilterControlComponent;assembly=pkhCommon"
+	    xmlns:ctrl="clr-namespace:PKHL.ProjectSweeper.Controls"
         xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
         xmlns:local="clr-namespace:PKHL.ProjectSweeper.FillRegionTypeCleaner"
-	    xmlns:FPV="clr-namespace:PKHL.ProjectSweeper.FillPatternViewer" 
+	    xmlns:FPV="clr-namespace:PKHL.ProjectSweeper.FillPatternViewer"
         xmlns:lex="http://wpflocalizeextension.codeplex.com"
-        xmlns:WPF="clr-namespace:pkhCommon.WPF.Converters;assembly=pkhCommon"
+        xmlns:conv="clr-namespace:PKHL.ProjectSweeper.Converters"
         lex:LocalizeDictionary.DesignCulture="fr"
         lex:ResxLocalizationProvider.DefaultAssembly="Project Sweeper"
         lex:ResxLocalizationProvider.DefaultDictionary="Language"
@@ -28,9 +28,8 @@
                     </CollectionViewSource>
                 </ResourceDictionary>
 
-                <ResourceDictionary Source="pack://application:,,,/pkhCommon;component/FilterControlComponent/FilterControl.generic.xaml" />
                 <ResourceDictionary>
-                    <WPF:IntegerToBoolConverter x:Key="I2B"/>
+                    <conv:IntegerToBoolConverter x:Key="I2B"/>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -197,7 +196,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Grid.Column="2" >
-                <FCC:FilterControl Name="FilterBox" Height="25" MinWidth="120" Margin="5,5,5,20" Header="{lex:Loc Key=FilterDotDotDot}" 
+                <ctrl:FilterControl Name="FilterBox" Height="25" MinWidth="120" Margin="5,5,5,20" Header="{lex:Loc Key=FilterDotDotDot}"
                                        TargetControl="{Binding ElementName=theListView}" FilterTextBindingPath="StyleName"/>
                 <CheckBox x:Name="cb_Delete" Content="{lex:Loc Key=DeleteSourceStyleCheckbox}" IsChecked="True" VerticalAlignment="Center" Margin="5,0,5,20" 
                           Unchecked="cb_Delete_Unchecked" Checked="CheckBox_Checked" />

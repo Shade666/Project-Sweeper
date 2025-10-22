@@ -25,10 +25,6 @@ namespace PKHL.ProjectSweeper.TextStyleCleaner
         {
             try
             {
-#if !DEBUG
-                if (!ProjectSweeper.UserIsEntitled(commandData))
-                    return Result.Failed;
-#endif
                 TheDoc = commandData.Application.ActiveUIDocument.Document;
                 allTextStyles = new ObservableCollection<TextStyleDefinition>();
 

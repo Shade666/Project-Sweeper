@@ -23,10 +23,6 @@ namespace PKHL.ProjectSweeper.LinePatternCleaner
         {
             try
             {
-#if !DEBUG
-                if (!ProjectSweeper.UserIsEntitled(commandData))
-                    return Result.Failed;
-#endif
                 theDoc = commandData.Application.ActiveUIDocument.Document;
                 allLinePatterns = new ObservableCollection<LinePatternDefinition>();
 

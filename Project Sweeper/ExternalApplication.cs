@@ -103,29 +103,8 @@ namespace PKHL.ProjectSweeper
                 "PKHL.ProjectSweeper.ApplicationHelp")) as PushButton;
             helpButton.Image = NewBitmapImage("help16x16.png");
             helpButton.LargeImage = NewBitmapImage("help.png");
-            helpButton.ToolTip = LocalizationProvider.GetLocalizedValue<string>("HELP_IconTip"); 
+            helpButton.ToolTip = LocalizationProvider.GetLocalizedValue<string>("HELP_IconTip");
             helpButton.AvailabilityClassName = "PKHL.ProjectSweeper.AlwaysAvailableCheck";
-
-#if MULTILICENSE
-            PushButton eulaButton = pkhlPanel.AddItem(
-                new PushButtonData("eulaButton",
-                LocalizationProvider.GetLocalizedValue<string>("EULA_Title"), 
-                dllPath, 
-                "PKHL.ProjectSweeper.ApplicationEula")) as PushButton;
-            eulaButton.Image = NewBitmapImage("about16x16.png");
-            eulaButton.LargeImage = NewBitmapImage("about.png");
-            eulaButton.ToolTip = LocalizationProvider.GetLocalizedValue<string>("EULA_IconTip");
-            eulaButton.AvailabilityClassName = "PKHL.ProjectSweeper.AlwaysAvailableCheck";
-#endif
-
-#if DEBUG
-            PushButton test_Button = pkhlPanel.AddItem(new PushButtonData("TestButton", "Test Entitlement", dllPath, "PKHL.ProjectSweeper.test_Entitlement")) as PushButton;
-            test_Button.Image = NewBitmapImage("help16x16.png");
-            test_Button.LargeImage = NewBitmapImage("help.png");
-            test_Button.ToolTip = "Test the entitlement system. Debug mode only.";
-            test_Button.Visible = true;
-            test_Button.AvailabilityClassName = "PKHL.ProjectSweeper.AlwaysAvailableCheck";
-#endif
         }
 
         /// <summary>
@@ -172,14 +151,6 @@ namespace PKHL.ProjectSweeper
                     LocalizationProvider.GetLocalizedValue<string>("HelpFile")));
 
             CreateRibbonPanel(application);
-
-            try
-            {
-                pkhCommon.StringHelper.RemoveNewLines("This causes the common library to load so the FRTC, LSC and FPC commands don't throw a file not found error.");
-            }
-            catch(Exception)
-            {                
-            }
 
             return Autodesk.Revit.UI.Result.Succeeded;
         }
